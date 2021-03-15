@@ -10,19 +10,14 @@ function Contacts(props) {
   useEffect(() => {
     store.dispatch(contactActionObjectGenerator(contactActionTypes.GET));
   }, []);
-  //display form when clicked on button
-  const [displayForm, toggleForm] = useState(false);
-  const onClickToggle = () => {
-    toggleForm(true);
-  };
+
   console.log(props);
   //markup
   return (
     <div>
       <h1>this is a component</h1>
-      <button onClick={onClickToggle}>+ new contact</button>
-      {displayForm ? <NewContact /> : <div></div>}
-      <div>
+      <NewContact />
+      <>
         {props.contactProps.status === "Successful" ? (
           <div>
             <table>
@@ -51,7 +46,7 @@ function Contacts(props) {
         ) : (
           <div></div>
         )}
-      </div>
+      </>
     </div>
   );
 }
