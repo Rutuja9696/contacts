@@ -12,7 +12,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-//function to add new contact
+//function to add new contact(modal)
 function NewContact() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
@@ -60,7 +60,7 @@ function NewContact() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Form Modal"
       >
         <button onClick={closeModal}>close</button>
         <form id="addContactForm" onSubmit={submitContact}>
