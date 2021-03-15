@@ -6,7 +6,7 @@ import contactActionObjectGenerator from "../../modules/redux/action/contactActi
 import NewContact from "./Form";
 import EditContact from "./EditForm";
 import url from "../services/api/fetchData";
-
+import styles from "../../styles/styles.module.css";
 function Contacts(props) {
   //using  hook
   useEffect(() => {
@@ -34,20 +34,19 @@ function Contacts(props) {
   };
   //markup
   return (
-    <div>
-      <h1>this is a component</h1>
+    <div className={styles.continer}>
       <NewContact />
       <>
         {props.contactProps.status === "Successful" ? (
-          <div>
+          <div className={styles.tableContainer}>
             <table>
               <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email Id</th>
-                <th>Phone no</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>EMAIL</th>
+                <th>PHONE NO</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
               </tr>
               {props.contactProps.data.map((contact) => {
                 return (

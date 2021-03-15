@@ -1,6 +1,8 @@
 import React from "react";
 import Modal from "react-modal";
 import url from "../services/api/fetchData";
+import styles from "../../styles/styles.module.css";
+
 //style for modal
 const customStyles = {
   content: {
@@ -55,7 +57,11 @@ function NewContact() {
 
   return (
     <>
-      <button onClick={openModal}>+ new contact</button>
+      <div className={styles.buttonContainer}>
+        <button onClick={openModal} className={styles.primaryButton}>
+          + new contact
+        </button>
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

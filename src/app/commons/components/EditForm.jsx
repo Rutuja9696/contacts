@@ -22,24 +22,18 @@ function EditContact(props) {
     setIsOpen(false);
   }
   const editContact = (event) => {
-    let id = event.target.parentNode.parentNode.id;
+    let id = props.contact.contactId;
     fetch(url + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        firstName: event.target.parentNode.parentNode.querySelector(
-          "#firstname"
-        ).innerText,
-        lastName: event.target.parentNode.parentNode.querySelector("#lastname")
-          .innerText,
-        email: event.target.parentNode.parentNode.querySelector("#email")
-          .innerText,
-        phone: event.target.parentNode.parentNode.querySelector("#phone")
-          .innerText,
-        status: event.target.parentNode.parentNode.querySelector("#status")
-          .innerText,
+        firstName: event.target.firstName.value,
+        lastName: event.target.lastName.value,
+        email: event.target.email.value,
+        phone: event.target.phone.value,
+        status: event.target.status.value,
       }),
     })
       .then((response) => {
@@ -47,7 +41,7 @@ function EditContact(props) {
         return response.json();
       })
       .then((data) => {
-        alert("Edited contact successfully !");
+        alert("Contact Updated successfully !");
       })
       .catch((err) => {
         console.log(err);
@@ -60,7 +54,7 @@ function EditContact(props) {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Edit Form Modal"
       >
         <button onClick={closeModal}>close</button>
         <form id="addContactForm" onSubmit={editContact}>
