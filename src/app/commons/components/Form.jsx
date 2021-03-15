@@ -1,8 +1,28 @@
-import { Component } from "react";
+import React from "react";
+import Modal from "react-modal";
 import url from "../services/api/fetchData";
-class NewContact extends Component {
+//style for modal
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+//function to add new contact
+function NewContact() {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
   //function to submit new contact
-  submitContact = (event) => {
+  const submitContact = (event) => {
     event.preventDefault();
     fetch(url, {
       method: "POST",
@@ -32,31 +52,39 @@ class NewContact extends Component {
     //clear input field after submit
     document.getElementById("addContactForm").reset();
   };
-  render() {
-    return (
-      <>
-        <form id="addContactForm" onSubmit={this.submitContact}>
+
+  return (
+    <>
+      <button onClick={openModal}>+ new contact</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <button onClick={closeModal}>close</button>
+        <form id="addContactForm" onSubmit={submitContact}>
           <div>
-            <input placeholder="First Name" name="firstName" />
-            <input placeholder="Last Name" name="lastName" />
+            <input placeholder="First Name" name="firstName" required />
+            <input placeholder="Last Name" name="lastName" required />
           </div>
           <div>
-            <input placeholder="Email" name="email" />
-            <input type="number" placeholder="Phone" name="phone" />
+            <input placeholder="Email" name="email" required />
+            <input type="number" placeholder="Phone" name="phone" required />
           </div>
           <div>
             <label type="text" name="status">
               Status :
             </label>
-            <input type="radio" name="status" value="Active" />
+            <input type="radio" name="status" value="Active" checked />
             <label for="Active">Active</label>
             <input type="radio" name="status" value="Inactive" />
             <label for="Inactive">In active</label>
           </div>
           <input type="submit" value="Submit" />
         </form>
-      </>
-    );
-  }
+      </Modal>
+    </>
+  );
 }
 export default NewContact;
