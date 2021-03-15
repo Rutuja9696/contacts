@@ -13,6 +13,7 @@ body{
     border-right: 1px solid #eb6d74;
 
 }
+/* view page */
 .buttonContainer{
     width:90%;
     height:30px;
@@ -24,11 +25,10 @@ body{
     color: white;
     padding:10px 12px;
     border-radius:1px;
-    position:relative;
-    float:right;
-    font-size: 16px;;
-
+    font-size: 15px;
+    margin-right: 5px;
 }
+/* table */
 .tableContainer{
     width:90%;
     margin:auto;
@@ -51,5 +51,41 @@ body{
     border-bottom:1px solid #EDF1F2;
     padding:20px;
     color:rgb(83, 80, 80);
-
+}
+.redButton{
+    border:1px transparent;
+    background-color: rgb(228, 72, 72);
+    color: white;
+    padding:10px 12px;
+    border-radius:1px;
+    font-size: 15px;
+    
+}
+/* floating model */
+h3{
+   margin: auto 5vh;
+    border:none;
+    padding:15px;
+    color:rgb(83, 80, 80);  
+}
+.textFields{
+    text-align: center;
+}
+.inputField{
+    margin: auto 5vh;
+    border:none;
+    padding:15px;
+    border-bottom:2px solid #3CC3A4;
+}
+.selectStatus{
+    margin: auto 5vh;
+    border:none;
+    padding:15px;
+    color:rgb(83, 80, 80);
+}
+.modalButtons{
+   margin: auto 5vh;
+    border:none;
+    padding:15px;
+    color:rgb(83, 80, 80);  
 }
