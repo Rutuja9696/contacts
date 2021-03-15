@@ -4,6 +4,7 @@ import store from "../../modules/redux/store/store";
 import { contactActionTypes } from "../../modules/redux/constants/contactActionTypes";
 import contactActionObjectGenerator from "../../modules/redux/action/contactAction";
 import NewContact from "./Form";
+import EditContact from "./EditForm";
 import url from "../services/api/fetchData";
 
 function Contacts(props) {
@@ -31,7 +32,6 @@ function Contacts(props) {
         console.log(err);
       });
   };
-  console.log(props);
   //markup
   return (
     <div>
@@ -53,18 +53,18 @@ function Contacts(props) {
                 return (
                   <>
                     <tr key={contact.contactId} id={contact.contactId}>
-                      <td>{contact.firstName}</td>
-                      <td>{contact.lastName}</td>
-                      <td>{contact.email}</td>
-                      <td>{contact.phone}</td>
-                      <td>{contact.status}</td>
+                      <td id="firstname">{contact.firstName}</td>
+                      <td id="lastname">{contact.lastName}</td>
+                      <td id="email">{contact.email}</td>
+                      <td id="phone">{contact.phone}</td>
+                      <td id="status">{contact.status}</td>
                       <td>
                         <input
                           type="button"
                           value="X"
                           onClick={deleteContact}
                         />
-                        <button>Edit</button>
+                        <EditContact contact={contact} />
                       </td>
                     </tr>
                   </>
