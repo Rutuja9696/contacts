@@ -6,12 +6,11 @@ import styles from "../../styles/styles.module.css";
 //style for modal
 const customStyles = {
   content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
+    width: "45%",
+    height: "auto",
+    margin: "auto",
+    top: "30%",
     bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
   },
 };
 //function to add new contact(modal)
@@ -68,17 +67,45 @@ function NewContact() {
         style={customStyles}
         contentLabel="Form Modal"
       >
-        <button onClick={closeModal}>close</button>
-        <form id="addContactForm" onSubmit={submitContact}>
-          <div>
-            <input placeholder="First Name" name="firstName" required />
-            <input placeholder="Last Name" name="lastName" required />
+        <form
+          id="addContactForm"
+          onSubmit={submitContact}
+          className={styles.forms}
+        >
+          <h3>Add new contact</h3>
+
+          <div className={styles.textFields}>
+            <input
+              className={styles.inputField}
+              placeholder="First Name"
+              name="firstName"
+              required
+            />
+            <input
+              className={styles.inputField}
+              placeholder="Last Name"
+              name="lastName"
+              required
+            />
           </div>
-          <div>
-            <input placeholder="Email" name="email" required />
-            <input type="number" placeholder="Phone" name="phone" required />
+          <br />
+          <div className={styles.textFields}>
+            <input
+              className={styles.inputField}
+              placeholder="Email"
+              name="email"
+              required
+            />
+            <input
+              className={styles.inputField}
+              type="number"
+              placeholder="Phone"
+              name="phone"
+              required
+            />
           </div>
-          <div>
+          <br />
+          <div className={styles.selectStatus}>
             <label type="text" name="status">
               Status :
             </label>
@@ -87,7 +114,16 @@ function NewContact() {
             <input type="radio" name="status" value="Inactive" />
             <label for="Inactive">In active</label>
           </div>
-          <input type="submit" value="Submit" />
+          <div className={styles.modalButtons}>
+            <input
+              type="submit"
+              value="Submit"
+              className={styles.primaryButton}
+            />
+            <button onClick={closeModal} className={styles.redButton}>
+              Close
+            </button>
+          </div>
         </form>
       </Modal>
     </>
