@@ -1,6 +1,8 @@
 import React from "react";
 import Modal from "react-modal";
 import url from "../services/api/fetchData";
+import styles from "../../styles/styles.module.css";
+
 //style for modal
 const customStyles = {
   content: {
@@ -22,6 +24,7 @@ function EditContact(props) {
     setIsOpen(false);
   }
   const editContact = (event) => {
+    event.preventDefault();
     let id = props.contact.contactId;
     fetch(url + id, {
       method: "PUT",
@@ -49,37 +52,49 @@ function EditContact(props) {
   };
   return (
     <>
-      <button onClick={openModal}>Edit</button>
+      <button onClick={openModal} className={styles.primaryButton}>
+        Edit
+      </button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
+        // onSubmit={closeModal}
         style={customStyles}
         contentLabel="Edit Form Modal"
       >
-        <button onClick={closeModal}>close</button>
-        <form id="addContactForm" onSubmit={editContact}>
-          <div>
+        <form
+          id="addContactForm"
+          onSubmit={editContact}
+          className={styles.forms}
+        >
+          <h3>Edit contact</h3>
+          <div className={styles.textFields}>
             <input
+              className={styles.inputField}
               placeholder="First Name"
               name="firstName"
               required
               defaultValue={props.contact.firstName}
             />
             <input
+              className={styles.inputField}
               placeholder="Last Name"
               name="lastName"
               required
               defaultValue={props.contact.lastName}
             />
           </div>
-          <div>
+          <br />
+          <div className={styles.textFields}>
             <input
+              className={styles.inputField}
               placeholder="Email"
               name="email"
               required
               defaultValue={props.contact.email}
             />
             <input
+              className={styles.inputField}
               type="number"
               placeholder="Phone"
               name="phone"
@@ -87,7 +102,8 @@ function EditContact(props) {
               defaultValue={props.contact.phone}
             />
           </div>
-          <div>
+          <br />
+          <div className={styles.selectStatus}>
             <label type="text" name="status">
               Status :
             </label>
@@ -108,7 +124,16 @@ function EditContact(props) {
             />
             <label for="Inactive">In active</label>
           </div>
-          <input type="submit" value="Submit" />
+          <div className={styles.modalButtons}>
+            <input
+              type="submit"
+              value="Update"
+              className={styles.primaryButton}
+            />
+            <button onClick={closeModal} className={styles.redButton}>
+              Cancel
+            </button>
+          </div>
         </form>
       </Modal>
     </>
