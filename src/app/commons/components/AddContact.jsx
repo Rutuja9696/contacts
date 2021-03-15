@@ -7,6 +7,7 @@ import NewContact from "./Form";
 import EditContact from "./EditForm";
 import url from "../services/api/fetchData";
 import styles from "../../styles/styles.module.css";
+
 function Contacts(props) {
   //using  hook
   useEffect(() => {
@@ -58,12 +59,13 @@ function Contacts(props) {
                       <td id="phone">{contact.phone}</td>
                       <td id="status">{contact.status}</td>
                       <td>
+                        <EditContact contact={contact} />
                         <input
                           type="button"
                           value="X"
                           onClick={deleteContact}
+                          className={styles.redButton}
                         />
-                        <EditContact contact={contact} />
                       </td>
                     </tr>
                   </>
