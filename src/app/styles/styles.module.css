@@ -27,6 +27,7 @@ body{
     border-radius:1px;
     font-size: 15px;
     margin-right: 5px;
+    outline:none;
 }
 /* table */
 .tableContainer{
@@ -59,7 +60,8 @@ body{
     padding:10px 12px;
     border-radius:1px;
     font-size: 15px;
-    
+    outline:none;
+
 }
 /* floating model */
 h3{
