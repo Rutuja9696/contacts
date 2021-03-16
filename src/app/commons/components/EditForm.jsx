@@ -45,6 +45,7 @@ function EditContact(props) {
       })
       .then((data) => {
         alert("Contact Updated successfully !");
+        window.location.reload(false);
       })
       .catch((err) => {
         console.log(err);

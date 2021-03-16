@@ -43,9 +43,13 @@ function NewContact() {
       })
       .then((data) => {
         console.log(data);
-        if (data.status === "Successful")
+        if (data.status === "Successful") {
           alert("You have added new contact successfully !");
-        else alert(data.message);
+          window.location.reload(false);
+        } else {
+          alert(data.message);
+          window.location.reload(false);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -53,7 +57,6 @@ function NewContact() {
     //clear input field after submit
     document.getElementById("addContactForm").reset();
   };
-
   return (
     <>
       <div className={styles.buttonContainer}>

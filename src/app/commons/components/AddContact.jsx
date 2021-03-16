@@ -28,6 +28,7 @@ function Contacts(props) {
       })
       .then((data) => {
         alert("Deleted contact successfully !");
+        window.location.reload(false);
       })
       .catch((err) => {
         console.log(err);
